@@ -35,6 +35,9 @@ export default class ReadStoryScreen extends React.Component {
     }
 
     searchFilterFunction = async (text) => {
+        this.setState({
+            book: [],
+        })
         const story = await db.collection("Stories").where('title', '==', text).get();
         story.docs.map((doc) => {
             this.setState({
